@@ -339,6 +339,10 @@ export class GraphQLObjectType {
     this._typeConfig = config;
   }
 
+  getConfig(): GraphQLObjectTypeConfig<*> {
+    return { ...this._typeConfig };
+  }
+
   getFields(): GraphQLFieldDefinitionMap {
     return this._fields || (this._fields =
       defineFieldMap(this, this._typeConfig.fields)

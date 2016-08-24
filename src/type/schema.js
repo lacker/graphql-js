@@ -216,6 +216,16 @@ export class GraphQLSchema {
   getDirective(name: string): ?GraphQLDirective {
     return find(this.getDirectives(), directive => directive.name === name);
   }
+
+  getConfig(): GraphQLSchemaConfig {
+    return {
+      query: this.getQueryType(),
+      mutation: this.getMutationType(),
+      subscription: this.getSubscriptionType(),
+      types: this.getTypes(),
+      directives: this.getDirectives(),
+    };
+  }
 }
 
 type TypeMap = { [typeName: string]: GraphQLNamedType }
